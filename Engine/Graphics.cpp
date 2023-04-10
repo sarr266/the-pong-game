@@ -316,6 +316,47 @@ void Graphics::PutPixel( int x,int y,Color c )
 	pSysBuffer[Graphics::ScreenWidth * y + x] = c;
 }
 
+void Graphics::DrawRect(int x0, int y0, int x1, int y1, Color c)
+{
+	if (x0 > x1)
+	{
+		std::swap(x0, x1);
+	}
+	if (y0 > y1)
+	{
+		std::swap(y0, y1);
+	}
+
+	for (int y = y0; y < y1; ++y)
+	{
+		for (int x = x0; x < x1; ++x)
+		{
+			PutPixel(x, y, c);
+		}
+	}
+}
+
+void Graphics::DrawDonut(int x0, int y0, int radiusbig, int radiussmol, Color c)
+{
+	const int radiusbig_sq = radiusbig * radiusbig;
+	const int radiussmol_sq = radiussmol * radiussmol;
+	for (int y = y0 - radiusbig; y < y0 + radiusbig; y++)
+	{
+		for (int x = x0 - radiusbig; x < x0 + radiusbig; x++)
+		{
+			const int diff_x = x - x0;
+			const int diff_y = y - y0;
+			const int diff_x_sq = diff_x * diff_x;
+			const int diff_y_sq = diff_y * diff_y;
+			if ((diff_x_sq + diff_y_sq <= radiusbig_sq) && (diff_x_sq + diff_y_sq>= radiussmol_sq))
+			{
+				PutPixel(x, y, c);
+			}
+		}
+	}
+}
+
+
 
 //////////////////////////////////////////////////
 //           Graphics Exception

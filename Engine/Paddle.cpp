@@ -3,8 +3,6 @@
 
 void Paddle::clampToScreen()
 {
-	locy += delta;
-
 	const int bottom = locy + getHeight();
 	if (locy < 0)
 	{
@@ -30,7 +28,7 @@ void Paddle::update(Keyboard& kbd)
 
 void Paddle::drawPaddle(Graphics& gfx)
 {
-	gfx.DrawRect(locx, locy, width, height, Colors::Green);
+	gfx.DrawRectDim(locx, locy, getWidth(), getHeight(), Colors::Cyan);
 }
 
 int Paddle::getHeight()
@@ -41,4 +39,14 @@ int Paddle::getHeight()
 int Paddle::getWidth()
 {
 	return width;
+}
+
+int Paddle::getX()
+{
+	return locx;
+}
+
+int Paddle::getY()
+{
+	return locy;
 }

@@ -38,8 +38,13 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	paddle.update(wnd.kbd);
+	ball.move();
+	paddle.clampToScreen();
 }
 
 void Game::ComposeFrame()
 {
+	paddle.drawPaddle(gfx);
+	ball.DrawBall(gfx);
 }

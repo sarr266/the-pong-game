@@ -16,23 +16,23 @@ void Ball::move()
 	locx += vx;
 	locy += vy;
 
-	const int right = locx + (2 * rad_big);
+	const int right = locx + rad_big;
 
 	if (right >= Graphics::ScreenWidth)
 	{
-		locx = (Graphics::ScreenWidth - 1) - (2 * rad_big);
+		locx = (Graphics::ScreenWidth - 1) - rad_big;
 		vx = -vx;
 	}
 
-	const int bottom = locy + (2 * rad_big);
-	if (locy < 0)
+	const int bottom = locy + rad_big;
+	if ((locy - rad_big) < 0)
 	{
-		locy = 0;
+		locy = rad_big;
 		vy = -vy;
 	}
 	else if (bottom >= Graphics::ScreenHeight)
 	{
-		locy = (Graphics::ScreenHeight - 1) - (2 * rad_big);
+		locy = (Graphics::ScreenHeight - 1) - rad_big;
 		vy = -vy;
 	}
 }
@@ -59,4 +59,9 @@ int Ball::getRadius()
 void Ball::DrawBall(Graphics& gfx)
 {
 	gfx.DrawDonut(locx, locy, rad_big, rad_big - 10, Colors::Green);
+}
+
+void Ball::changeSpeed()
+{
+	vx *= -1;
 }

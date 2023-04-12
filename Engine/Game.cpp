@@ -40,6 +40,10 @@ void Game::UpdateModel()
 {
 	paddle.update(wnd.kbd);
 	ball.move();
+	if (ball.isCollision(paddle))
+	{
+		ball.changeSpeed();
+	}
 	paddle.clampToScreen();
 }
 

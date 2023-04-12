@@ -12,10 +12,11 @@ public:
 	bool isCollision(Paddle& p);
 	int getRadius();
 	void DrawBall(Graphics& gfx);
+	void changeSpeed();
 private:
-	int locx = 300;
-	int locy = 100;
+	int locx = 400;
+	int locy = 300;
 	static constexpr int rad_big = 20;
-	int vx = 1;
-	int vy = 1;
+	int vx = 2;
+	int vy = 2;
 };

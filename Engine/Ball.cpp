@@ -23,6 +23,10 @@ void Ball::move()
 		locx = (Graphics::ScreenWidth - 1) - rad_big;
 		vx = -vx;
 	}
+	else if (locx - rad_big < 0)
+	{
+		locx = rad_big;
+	}
 
 	const int bottom = locy + rad_big;
 	if ((locy - rad_big) < 0)

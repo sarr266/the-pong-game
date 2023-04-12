@@ -38,13 +38,26 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	paddle.update(wnd.kbd);
-	ball.move();
-	if (ball.isCollision(paddle))
+	if (isGameStarted && !isGameOver)
 	{
-		ball.changeSpeed();
+		ball.move();
+		paddle.update(wnd.kbd);
+		paddle.clampToScreen();
+
+		if (ball.getX() - ball.getRadius() <= 0)
+		{
+			isGameOver = true;
+		}
+
+		if (ball.isCollision(paddle))
+		{
+			ball.changeSpeed();
+		}
 	}
-	paddle.clampToScreen();
+	else
+	{
+		isGameStarted = wnd.kbd.KeyIsPressed(VK_RETURN);
+	}
 }
 
 void Game::ComposeFrame()

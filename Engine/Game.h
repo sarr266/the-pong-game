@@ -46,5 +46,7 @@ private:
 	/*  User Variables              */
 	Paddle paddle;
 	Ball ball;
+	bool isGameOver = false;
+	bool isGameStarted = false;
 	/********************************/
 };

@@ -40,15 +40,13 @@ void Ball::move()
 bool Ball::isCollision(Paddle& p)
 {
 	const int paddleright = p.getX() + p.getWidth();
-	const int paddlebottom = p.getY() + p.getHeight();
-	const int ballright = locx + (2 * rad_big);
-	const int ballbottom = locy + (2 * rad_big);
+	//const int paddlebottom = p.getY() + p.getHeight();
+	const int ballleft = locx - rad_big;
+	//const int ballbottom = locy + (2 * rad_big);
 
 	return
-		paddleright >= locx &&
-		p.getX() <= ballright &&
-		ballbottom >= locy &&
-		p.getY() <= ballbottom;
+		paddleright >= locx - rad_big &&
+		p.getX() <= ballleft;
 }
 
 int Ball::getRadius()

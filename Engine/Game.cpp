@@ -40,14 +40,14 @@ void Game::UpdateModel()
 {
 	if (isGameStarted && !isGameOver)
 	{
-		ball.move();
-		paddle.update(wnd.kbd);
-		paddle.clampToScreen();
-
-		if (ball.getX() - ball.getRadius() <= 0)
+		if ((ball.getX() - ball.getRadius() <= paddle.getX() + paddle.getWidth()) && !ball.isCollision(paddle))
 		{
 			isGameOver = true;
 		}
+
+		ball.move();
+		paddle.update(wnd.kbd);
+		paddle.clampToScreen();
 
 		if (ball.isCollision(paddle))
 		{

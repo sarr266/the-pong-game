@@ -13,7 +13,7 @@ public:
 	int getX();
 	int getY();
 private:
-	int locx = 30;
+	int locx = 20;
 	int locy = 200;
 	static constexpr int height = 150;
 	static constexpr int width = 40;

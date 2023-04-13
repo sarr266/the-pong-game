@@ -17,6 +17,6 @@ private:
 	int locx = 400;
 	int locy = 300;
 	static constexpr int rad_big = 20;
-	int vx = 2;
-	int vy = 2;
+	int vx = 4;
+	int vy = 4;
 };
